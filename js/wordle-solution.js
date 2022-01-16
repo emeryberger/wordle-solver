@@ -12,9 +12,9 @@ function wordleSolution() {
 	     'day' : days };
 }
 
-function copyMe(day) {
+function copyMe(msg) {
     (async () => {
-	await navigator.clipboard.writeText(`Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`);
+	await navigator.clipboard.writeText(msg);
     })();
 }
 
@@ -29,6 +29,6 @@ function copyMe(day) {
     }
     const day = soln['day'];
     const msg = `Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
-    document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${day}')">Share</button>`;
+    document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${msg}')">Share</button>`;
 })();
 
