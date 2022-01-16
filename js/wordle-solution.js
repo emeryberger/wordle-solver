@@ -8,16 +8,27 @@ function wordleSolution() {
     const days = Math.floor((now - wordleStartDate) / (1000 * 60 * 60 * 24)); // number of days since wordleStartDate
     // console.log(`Wordle solution for today is ${Ls[days]}.`);
     // console.log(`There are now ${Ls.length-days} days remamining of Wordle solutions.`);
-    return Ls[days];
+    return { 'solution' : Ls[days],
+	     'day' : days };
+}
+
+function copyMe(day) {
+    (async () => {
+	await navigator.clipboard.writeText(`Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`);
+    })();
 }
 
 // Pretend to be thinking.
 (async () => {
     await new Promise(r => setTimeout(r, 2000));
     // OK, slap in the solution.
+    let soln = wordleSolution();
     for (i of Array.from(document.getElementsByClassName('wordle-solution')))
     {
-	i.innerHTML = wordleSolution().toString();
+	i.innerHTML = soln['solution'].toString();
     }
+    const day = soln['day'];
+    const msg = `Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
+    document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${day}')">Copy</button>`;
 })();
 
