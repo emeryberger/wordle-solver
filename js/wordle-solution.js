@@ -14,7 +14,7 @@ function wordleSolution() {
 
 function copyMe(msg) {
     (async () => {
-	await navigator.clipboard.writeText(msg);
+	await navigator.clipboard.writeText(msg + '\n' + 'https://emeryberger.github.io/wordle-solver/');
     })();
 }
 
