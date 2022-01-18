@@ -33,6 +33,6 @@ function copyMe(msg) {
     let tomorrow = now;
     tomorrow.setDate(now.getDate() + 1);
     const tomorrowSolution = wordleSolution(tomorrow)['solution'].toString();
-    document.getElementById('wordle-solution-tomorrow').innerHTML = `Tomorrow's word is <b>${tomorrowSolution}</b>.`;
+    document.getElementById('wordle-solution-tomorrow').innerHTML = `Tomorrow's solution is <b>${tomorrowSolution}</b>.`;
 })();
 
