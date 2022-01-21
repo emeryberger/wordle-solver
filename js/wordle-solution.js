@@ -17,8 +17,15 @@ function copyMe(msg) {
     })();
 }
 
-// Pretend to be thinking.
 (async () => {
+    document.getElementById('wordle-solution-tomorrow').addEventListener('click', () => {
+	const now = new Date(); // current date
+	const tomorrow = now;
+	tomorrow.setDate(now.getDate() + 1);
+	const tomorrowSolution = wordleSolution(tomorrow)['solution'].toString();
+	document.getElementById('wordle-solution-tomorrow').innerHTML = `Tomorrow's solution is <b>${tomorrowSolution}</b>.`
+    });
+    // Pretend to be thinking.
     await new Promise(r => setTimeout(r, 2000));
     // OK, slap in the solution.
     let now = new Date(); // current date
@@ -30,9 +37,6 @@ function copyMe(msg) {
     const day = soln['day'];
     const msg = `Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
     document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${msg}')">Share</button>`;
-    let tomorrow = now;
-    tomorrow.setDate(now.getDate() + 1);
-    const tomorrowSolution = wordleSolution(tomorrow)['solution'].toString();
-    document.getElementById('wordle-solution-tomorrow').innerHTML = `Tomorrow's solution is <b>${tomorrowSolution}</b>.`;
+    document.getElementById('wordle-solution-tomorrow').innerHTML = "Click here to reveal tomorrow's solution.";
 })();
 
