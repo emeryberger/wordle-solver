@@ -25,18 +25,17 @@ function copyMe(msg) {
 	const tomorrowSolution = wordleSolution(tomorrow)['solution'].toString();
 	document.getElementById('wordle-solution-tomorrow').innerHTML = `Tomorrow's solution is <b>${tomorrowSolution}</b>.`
     });
-    // Pretend to be thinking.
-    await new Promise(r => setTimeout(r, 2000));
-    // OK, slap in the solution.
-    let now = new Date(); // current date
-    let soln = wordleSolution(now);
-    for (i of Array.from(document.getElementsByClassName('wordle-solution')))
-    {
-	i.innerHTML = soln['solution'].toString();
-    }
-    const day = soln['day'];
-    const msg = `Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
-    document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${msg}')">Share</button>`;
-    document.getElementById('wordle-solution-tomorrow').innerHTML = "Click here to reveal tomorrow's solution.";
+    document.getElementById('wordle-solution-text').addEventListener('click', () => {
+	const now = new Date(); // current date
+	const soln = wordleSolution(now);
+	for (i of Array.from(document.getElementsByClassName('wordle-solution')))
+	{
+	    i.innerHTML = soln['solution'].toString();
+	}
+	const day = soln['day'];
+	const msg = `Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
+	document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${msg}')">Share</button>`;
+    });
+    document.getElementById('wordle-solution-tomorrow').innerHTML = "(Click here to reveal <em>tomorrow's</em> solution.)";
 })();
 
