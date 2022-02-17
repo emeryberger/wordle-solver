@@ -21,12 +21,12 @@ function copyMe(msg) {
     document.getElementById('wordle-solution-tomorrow').addEventListener('click', () => {
 	const now = new Date(); // current date
 	const tomorrow = now;
-	tomorrow.setDate(now.getDate() + 1);
+	tomorrow.setDate(now.getDate() + 2);
 	const tomorrowSolution = wordleSolution(tomorrow)['solution'].toString();
 	document.getElementById('wordle-solution-tomorrow').innerHTML = `Tomorrow's solution is <b>${tomorrowSolution}</b>.`
     });
     document.getElementById('wordle-solution-text').addEventListener('click', () => {
-	const now = new Date(); // current date
+	const now = (new Date()).getDate() + 1; // current date
 	const soln = wordleSolution(now);
 	for (i of Array.from(document.getElementsByClassName('wordle-solution')))
 	{
