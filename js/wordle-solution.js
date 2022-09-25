@@ -18,7 +18,7 @@ function copyMe(msg) {
 }
 
 (async () => {
-    const offset = 6; // days added to correct for NYT edits
+    const offset = 20; // days added to correct for NYT edits
     document.getElementById('wordle-solution-tomorrow').addEventListener('click', () => {
 	const now = new Date(); // current date
 	let tomorrow = now;
