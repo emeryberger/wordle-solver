@@ -35,7 +35,7 @@ function copyMe(msg) {
 	    i.innerHTML = soln['solution'].toString();
 	}
 	const day = soln['day'];
-	const msg = `Wordle ${day} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
+	const msg = `Wordle ${day-20} 1/6 \u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}\u{1F7E9}`;
 	document.getElementById('wordle-barchart').innerHTML = `${msg}` + `<button onclick="copyMe('${msg}')">Share</button>`;
     });
     document.getElementById('wordle-solution-tomorrow').innerHTML = "(Click here to reveal <em>tomorrow's</em> solution.)";
